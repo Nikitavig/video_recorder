@@ -6,11 +6,14 @@ import time
 import subprocess
 from datetime import datetime
 
+
 SAVE_PATH = 'video'
 TIMER = 1
 
+
 FORMAT = 'mp4'
 # FORMAT = 'avi'
+
 
 def reboot():
 	try:
@@ -37,14 +40,12 @@ def main():
 		# Проверяем не пора ли перезагрузить компьютер
 		# Если пора, то сохраняем файл 
 		if (datetime.today().timestamp() - start_time) > TIMER:
-			
 			# Сохраняем видео
 			out.release()
 			cv2.destroyAllWindows()
 			break
 		else:
 			try:
-
 				img = pyautogui.screenshot()
 				image = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
 				out.write(image)
